@@ -1,15 +1,15 @@
 {
-  "name": "storybook-addon-kit",
+  "name": "storybook-addon-storyclip",
   "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "description": "Adds a toolbar button to capture pieces of a story as an image which is stored on the clipboard",
   "keywords": [
-    "storybook-addons"
+    "Screenshot", "Screenclip", "Story Image", "Screen Capture", "Screenshot", "Screenclip", "Story Image", "Screen Capture", "Screenshot", "Screenclip", "Story Image", "Screen Capture", "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/kahzew/storybook-addon-storyclip.git"
   },
-  "author": "package-author",
+  "author": "kahzew <elliot-cash.code@outlook.com>",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -80,10 +80,13 @@
     "access": "public"
   },
   "storybook": {
-    "displayName": "Addon Kit",
+    "displayName": "Storyclip",
     "supportedFrameworks": [
-      "supported-frameworks"
+      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }
