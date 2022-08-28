@@ -3,7 +3,19 @@
   "version": "0.0.0",
   "description": "Adds a toolbar button to capture pieces of a story as an image which is stored on the clipboard",
   "keywords": [
-    "Screenshot", "Screenclip", "Story Image", "Screen Capture", "Screenshot", "Screenclip", "Story Image", "Screen Capture", "Screenshot", "Screenclip", "Story Image", "Screen Capture", "storybook-addons"
+    "Screenshot",
+    "Screenclip",
+    "Story Image",
+    "Screen Capture",
+    "Screenshot",
+    "Screenclip",
+    "Story Image",
+    "Screen Capture",
+    "Screenshot",
+    "Screenclip",
+    "Story Image",
+    "Screen Capture",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -56,7 +68,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4",
+    "typescript": "^4.8.2",
     "zx": "^1.14.1"
   },
   "peerDependencies": {
@@ -82,7 +94,15 @@
   "storybook": {
     "displayName": "Storyclip",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },

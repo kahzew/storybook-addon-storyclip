@@ -10100,10 +10100,10 @@
   "resolved" "https://registry.npmjs.org/typescript-memoize/-/typescript-memoize-1.0.1.tgz"
   "version" "1.0.1"
 
-"typescript@^4.2.4", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>=2.7":
-  "integrity" "sha512-zZ4hShnmnoVnAHpVHWpTcxdv7dWP60S2FsydQLV8V5PbS3FifjWFFRiHSWpDJahly88PRyV5teTSLoq4eG7mKw=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.3.2.tgz"
-  "version" "4.3.2"
+"typescript@^4.8.2", "typescript@>= 3.x", "typescript@>= 4.3.x", "typescript@>=2.7":
+  "integrity" "sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.8.2.tgz"
+  "version" "4.8.2"
 
 "typical@^4.0.0":
   "integrity" "sha512-VAH4IvQ7BDFYglMd7BPRDfLgxZZX4O4TFcRDA6EN5X7erNJJq+McIEp8np9aVtxrCJ6qx4GTYVfOWNjcqwZgRw=="
