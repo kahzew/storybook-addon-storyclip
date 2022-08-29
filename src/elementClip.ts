@@ -25,7 +25,7 @@ export class ElementClip {
      * @param element The element to clip
      * @param callback The callback to invoke upon completion
      */
-    public create(element: HTMLElement, callback: () => void): void {
+    public create(element: HTMLElement, callback: (dataUrl: string) => void): void {
 
         // Create settings
         let html2canvasSettings: Partial<Options> = this.createHtml2CanvasSettings(element);
@@ -44,7 +44,7 @@ export class ElementClip {
 
                     // finished copying, hook into storybook api?
                     if (callback) {
-                        callback();
+                        callback(canvas.toDataURL());
                     }
                 });
             });

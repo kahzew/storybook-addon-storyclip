@@ -1,16 +1,12 @@
 import React, { useCallback, useEffect } from "react";
 import { useGlobals, useStorybookApi } from "@storybook/api";
 import { Icons, IconButton } from "@storybook/components";
-import { TOOL_ID, ADDON_ID, EVENTS } from "./constants";
-import { addons } from "@storybook/addons";
+import { TOOL_ID, ADDON_ID } from "./constants";
 
 export const Tool = () => {
     const [globals, updateGlobals] = useGlobals();
     const { storyclipEnabled } = globals;
     const api = useStorybookApi();
-    const channel = addons.getChannel();
-
-    let uid: number = 0;
 
     const toggleStoryclip = useCallback(
         () => {
@@ -19,25 +15,6 @@ export const Tool = () => {
             })
         },
         [updateGlobals, storyclipEnabled, api]
-    );
-
-
-    const notifyStoryClipped = useCallback(
-        () => {
-            console.log('THE FUCK ' + uid);
-            api.addNotification({
-                content: {
-                    headline: 'Storyclip Finished',
-                    subHeadline: 'Check your clipboard for the generated image.'
-                },
-                id: `storybook-addon-storyclip-notification-${++uid}`,
-                link: '#',
-                icon: {
-                    name: 'camera',
-                    color: 'purple'
-                }
-            });
-        }, [api, uid]
     );
 
     useEffect(() => {
@@ -49,8 +26,6 @@ export const Tool = () => {
             action: toggleStoryclip,
         });
     }, [toggleStoryclip, api]);
-
-    channel.on(EVENTS.CLIPPED, notifyStoryClipped);
 
     return (
         <IconButton

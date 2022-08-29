@@ -1,5 +1,5 @@
 import { addons, types } from "@storybook/addons";
-import { ADDON_ID, PARAM_KEY, TOOL_ID, EVENTS } from "../constants";
+import { ADDON_ID, PARAM_KEY, TOOL_ID } from "../constants";
 import { Tool } from "../Tool";
 
 // Register the addon
