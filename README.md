@@ -1,4 +1,4 @@
-# Storybook Addon Storyclip
+# Storyclip
 
 Storybook addon for clipping a story or a part of a story as an image.
 
@@ -18,7 +18,7 @@ Storybook addon for clipping a story or a part of a story as an image.
 
 ## Usage
 
-This addon requires Storybook 6.3 or later. It also uses ![html2canvas](https://github.com/niklasvh/html2canvas).
+This addon requires Storybook 6.3 or later. It also uses [html2canvas](https://github.com/niklasvh/html2canvas).
 
 ```sh
 npm i -D @storybook/storybook-addon-storyclip
