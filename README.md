@@ -1,92 +1,33 @@
 # Storybook Addon Storyclip
-Adds a toolbar button to capture pieces of a story as an image which is stored on the clipboard
 
-### Development scripts
+Storybook addon for clipping a story or a part of a story as an image.
 
-- `yarn start` runs babel in watch mode and starts Storybook
-- `yarn build` build and package your addon code
+1. Press the <kbd>c<kdb>, or click the Camera button to enable the addon.
 
-### Switch from TypeScript to JavaScript
+2. Hover over a DOM element in the story canvas.
 
-Don't want to use TypeScript? We offer a handy eject command: `yarn eject-ts`
+3. Storybook will highlight the elements as you hover so you know which element is being clipped.
 
-This will convert all code to JS. It is a destructive process, so we recommended running this before you start writing any code.
+4. Click the desired element.
 
-## What's included?
+5. Wait for the notification in the bottom left.
 
-![Demo](https://user-images.githubusercontent.com/42671/107857205-e7044380-6dfa-11eb-8718-ad02e3ba1a3f.gif)
+6. Paste the contents of your clipboard in whatever application you want your clipped story in.
 
-The addon code lives in `src`. It demonstrates all core addon related concepts. The three [UI paradigms](https://storybook.js.org/docs/react/addons/addon-types#ui-based-addons)
+![Demo](example.gif)
 
-- `src/Tool.js`
-- `src/Panel.js`
-- `src/Tab.js`
+## Usage
 
-Which, along with the addon itself, are registered in `src/preset/manager.js`.
-
-Managing State and interacting with a story:
-
-- `src/withGlobals.js` & `src/Tool.js` demonstrates how to use `useGlobals` to manage global state and modify the contents of a Story.
-- `src/withRoundTrip.js` & `src/Panel.js` demonstrates two-way communication using channels.
-- `src/Tab.js` demonstrates how to use `useParameter` to access the current story's parameters.
-
-Your addon might use one or more of these patterns. Feel free to delete unused code. Update `src/preset/manager.js` and `src/preset/preview.js` accordingly.
-
-Lastly, configure you addon name in `src/constants.js`.
-
-### Metadata
-
-Storybook addons are listed in the [catalog](https://storybook.js.org/addons) and distributed via npm. The catalog is populated by querying npm's registry for Storybook-specific metadata in `package.json`. This project has been configured with sample data. Learn more about available options in the [Addon metadata docs](https://storybook.js.org/docs/react/addons/addon-catalog#addon-metadata).
-
-## Release Management
-
-### Setup
-
-This project is configured to use [auto](https://github.com/intuit/auto) for release management. It generates a changelog and pushes it to both GitHub and npm. Therefore, you need to configure access to both:
-
-- [`NPM_TOKEN`](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) Create a token with both _Read and Publish_ permissions.
-- [`GH_TOKEN`](https://github.com/settings/tokens) Create a token with the `repo` scope.
-
-Then open your `package.json` and edit the following fields:
-
-- `name`
-- `author`
-- `repository`
-
-#### Local
-
-To use `auto` locally create a `.env` file at the root of your project and add your tokens to it:
-
-```bash
-GH_TOKEN=<value you just got from GitHub>
-NPM_TOKEN=<value you just got from npm>
-```
-
-Lastly, **create labels on GitHub**. You’ll use these labels in the future when making changes to the package.
-
-```bash
-npx auto create-labels
-```
-
-If you check on GitHub, you’ll now see a set of labels that `auto` would like you to use. Use these to tag future pull requests.
-
-#### GitHub Actions
-
-This template comes with GitHub actions already set up to publish your addon anytime someone pushes to your repository.
-
-Go to `Settings > Secrets`, click `New repository secret`, and add your `NPM_TOKEN`.
-
-### Creating a release
-
-To create a release locally you can run the following command, otherwise the GitHub action will make the release for you.
+This addon requires Storybook 6.3 or later. It also uses ![html2canvas](https://github.com/niklasvh/html2canvas).
 
 ```sh
-yarn release
+npm i -D @storybook/storybook-addon-storyclip
 ```
 
-That will:
+Add `"@storybook/storybook-addon-storyclip"` to the addons array in your `.storybook/main.js`:
 
-- Build and package the addon code
-- Bump the version
-- Push a release to GitHub and npm
-- Push a changelog to GitHub
+```js
+module.exports = {
+  addons: ['@storybook/storybook-addon-storyclip'],
+};
+```
