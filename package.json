@@ -1,6 +1,6 @@
 {
     "name": "storybook-addon-storyclip",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Adds a toolbar button to capture pieces of a story as an image which is stored on the clipboard",
     "keywords": [
         "Screenshot",
