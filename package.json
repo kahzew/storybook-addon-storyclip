@@ -7,14 +7,6 @@
         "Screenclip",
         "Story Image",
         "Screen Capture",
-        "Screenshot",
-        "Screenclip",
-        "Story Image",
-        "Screen Capture",
-        "Screenshot",
-        "Screenclip",
-        "Story Image",
-        "Screen Capture",
         "storybook-addons"
     ],
     "repository": {
@@ -33,7 +25,6 @@
         "*.d.ts"
     ],
     "scripts": {
-        "postinstall": "node scripts/welcome.js",
         "clean": "rimraf ./dist",
         "buildBabel": "concurrently \"yarn buildBabel:cjs\" \"yarn buildBabel:esm\"",
         "buildBabel:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.jsx,.ts,.tsx\"",
@@ -78,7 +69,8 @@
         "@storybook/core-events": "^6.5.8",
         "@storybook/theming": "^6.5.8",
         "react": "^16.8.0 || ^17.0.0",
-        "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+        "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+        "html2canvas": "^1.4.1"
     },
     "peerDependenciesMeta": {
         "react": {
@@ -105,8 +97,5 @@
             "react-native"
         ],
         "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
-    },
-    "dependencies": {
-        "html2canvas": "^1.4.1"
     }
 }

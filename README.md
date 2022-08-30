@@ -2,7 +2,7 @@
 
 Storybook addon for clipping a story or a part of a story as an image.
 
-1. Press the <kbd>c</kdb>, or click the Camera button to enable the addon.
+1. Press the <kbd>c</kbd> key, or click the Camera button to enable the addon.
 
 2. Hover over any DOM element in the story canvas.
 
@@ -18,13 +18,15 @@ Storybook addon for clipping a story or a part of a story as an image.
 
 ## Usage
 
-This addon requires Storybook 6.3 or later. It also uses [html2canvas](https://github.com/niklasvh/html2canvas).
+This addon requires Storybook 6.3 or later. 
+
+It also uses [html2canvas](https://github.com/niklasvh/html2canvas) under the hood.
 
 ```sh
-npm i -D @storybook/storybook-addon-storyclip
+npm i -D storybook-addon-storyclip
 ```
 
-Add `"@storybook/storybook-addon-storyclip"` to the addons array in your `.storybook/main.js`:
+Add `"storybook-addon-storyclip"` to the addons array in your `.storybook/main.js`:
 
 ```js
 module.exports = {
