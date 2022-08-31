@@ -69,8 +69,7 @@
         "@storybook/core-events": "^6.5.8",
         "@storybook/theming": "^6.5.8",
         "react": "^16.8.0 || ^17.0.0",
-        "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
-        "html2canvas": "^1.4.1"
+        "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
     },
     "peerDependenciesMeta": {
         "react": {
@@ -79,6 +78,9 @@
         "react-dom": {
             "optional": true
         }
+    },
+    "dependencies": {
+        "html2canvas": "^1.4.1"
     },
     "publishConfig": {
         "access": "public"
