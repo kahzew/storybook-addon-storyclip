@@ -30,6 +30,6 @@ Add `"storybook-addon-storyclip"` to the addons array in your `.storybook/main.j
 
 ```js
 module.exports = {
-  addons: ['@storybook/storybook-addon-storyclip'],
+  addons: ['storybook-addon-storyclip'],
 };
 ```
