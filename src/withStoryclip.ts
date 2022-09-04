@@ -1,14 +1,20 @@
 /* eslint-env browser */
 import type { AnyFramework, PartialStoryFn as StoryFunction, StoryContext } from '@storybook/csf';
-import { useEffect } from '@storybook/addons';
+import { useEffect, addons } from '@storybook/addons';
 import { ElementClip } from './elementClip';
 import { ElementOverlay } from './elementOverlay';
-import { Notify } from './notify';
+import { EVENTS } from './constants';
 
 export const withStoryclip = (
     StoryFn: StoryFunction<AnyFramework>,
     context: StoryContext<AnyFramework>
 ) => {
+
+    /**
+     * Get the api channel
+     */
+    const channel = addons.getChannel();
+
     /**
      * Storyclip enabled
      */
@@ -25,11 +31,6 @@ export const withStoryclip = (
     const elementOverlay: ElementOverlay = new ElementOverlay();
 
     /**
-     * Notify
-     */
-    const notify: Notify = new Notify();
-
-    /**
      * Event bindings for click
      */
     useEffect(() => {
@@ -38,7 +39,7 @@ export const withStoryclip = (
                 event.stopPropagation();
                 if (storyclipEnabled) {
                     elementClipper.create(event.target as HTMLElement, (dataUri: string) => {
-                        notify.start(dataUri);
+                        channel.emit(EVENTS.FINISH, dataUri);
                     });
                 }
             });
@@ -48,9 +49,8 @@ export const withStoryclip = (
 
         return () => {
             document.removeEventListener('click', onClick);
-            notify.stop();
         };
-    }, [storyclipEnabled, elementClipper, notify]);
+    }, [storyclipEnabled, elementClipper]);
 
     /**
      * Event Binding for mouse over
