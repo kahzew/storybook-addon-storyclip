@@ -35,14 +35,13 @@ export const withStoryclip = (
      */
     useEffect(() => {
         const onClick = (event: MouseEvent) => {
-            window.requestAnimationFrame(() => {
-                event.stopPropagation();
-                if (storyclipEnabled) {
-                    elementClipper.create(event.target as HTMLElement, (dataUri: string) => {
-                        channel.emit(EVENTS.FINISH, dataUri);
-                    });
-                }
-            });
+            if (storyclipEnabled) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                elementClipper.create(event.target as HTMLElement, (dataUri: string) => {
+                    channel.emit(EVENTS.FINISH, dataUri);
+                });
+            }
         };
 
         document.addEventListener('click', onClick);
@@ -58,7 +57,7 @@ export const withStoryclip = (
     useEffect(() => {
         const onMouseOver = (event: MouseEvent) => {
             window.requestAnimationFrame(() => {
-                event.stopPropagation();
+                event.stopImmediatePropagation();
                 elementOverlay.startDraw(event.target as HTMLElement);
             });
         };
@@ -70,12 +69,14 @@ export const withStoryclip = (
         };
 
         if (storyclipEnabled) {
+            document.getElementById('root').style.cursor = 'pointer';
             elementOverlay.initialize();
             document.addEventListener('mouseover', onMouseOver);
             window.addEventListener('resize', onResize);
         }
 
         return () => {
+            document.getElementById('root').style.cursor = null;
             document.removeEventListener('mouseover', onMouseOver);
             window.removeEventListener('resize', onResize);
             elementOverlay.destroy();
