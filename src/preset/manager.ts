@@ -1,15 +1,15 @@
 import { addons, types } from "@storybook/addons";
-import { ADDON_ID, EVENTS, PARAM_KEY, TOOL_ID } from "../constants";
+import { ADDON_ID, EVENTS, PARAM_KEY, TOOL_IDS } from "../constants";
 import { Tool } from "../Tool";
-import { useGlobals } from '@storybook/api';
 
-// For notifications
+// Unique ID for SB notifications
 let notificationId: number = 1;
 
 // Register the addon
 addons.register(ADDON_ID, (api) => {
+
     // Register the tool
-    addons.add(TOOL_ID, {
+    addons.add(TOOL_IDS.CLIP_STORY, {
         type: types.TOOL,
         title: "Storyclip",
         match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
@@ -17,8 +17,12 @@ addons.register(ADDON_ID, (api) => {
         paramKey: PARAM_KEY
     });
 
+    // Get the addons channel
     const channel = addons.getChannel();
+
+    // Register the finish event
     channel.on(EVENTS.FINISH, (dataUri: string) => {
+
         // Notify User
         api.addNotification({
             content: {
@@ -33,6 +37,7 @@ addons.register(ADDON_ID, (api) => {
             },
             onClear: () => { }
         });
+
         // Update the global
         api.updateGlobals({
             storyclipEnabled: false

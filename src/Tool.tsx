@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect } from "react";
 import { useGlobals, useStorybookApi } from "@storybook/api";
 import { Icons, IconButton } from "@storybook/components";
-import { TOOL_ID, ADDON_ID } from "./constants";
+import { TOOL_IDS, ADDON_ID, EVENTS } from "./constants";
+import { addons } from '@storybook/addons'
 
 export const Tool = () => {
     const [globals, updateGlobals] = useGlobals();
     const { storyclipEnabled } = globals;
     const api = useStorybookApi();
+    const channel = addons.getChannel();
 
     const toggleStoryclip = useCallback(
         () => {
@@ -15,6 +17,13 @@ export const Tool = () => {
             })
         },
         [updateGlobals, storyclipEnabled, api]
+    );
+
+    const requestWholeStoryClip = useCallback(
+        () => {
+            channel.emit(EVENTS.REQUEST)
+        },
+        [channel]
     );
 
     useEffect(() => {
@@ -28,12 +37,20 @@ export const Tool = () => {
     }, [toggleStoryclip, api]);
 
     return (
-        <IconButton
-            key={TOOL_ID}
-            active={storyclipEnabled}
-            title="Toggle Storyclip"
-            onClick={toggleStoryclip}>
-            <Icons icon="camera" />
-        </IconButton>
+        <React.Fragment>
+            <IconButton
+                key={TOOL_IDS.CLIP_STORY}
+                active={storyclipEnabled}
+                title="Toggle Storyclip"
+                onClick={toggleStoryclip}>
+                <Icons icon="location" />
+            </IconButton>
+            <IconButton
+                key={TOOL_IDS.WHOLE_STORY}
+                title="Clip Whole Story"
+                onClick={requestWholeStoryClip}>
+                <Icons icon="camera" />
+            </IconButton>
+        </React.Fragment>
     );
 };
