@@ -83,5 +83,21 @@ export const withStoryclip = (
         };
     }, [storyclipEnabled, elementOverlay]);
 
+    /**
+     * Remove any other listeners for the storyclip
+     * request event.
+     */
+    channel.removeAllListeners(EVENTS.REQUEST);
+
+    /**
+     * Listen to the request event for whole story clips.
+     */
+    channel.once(EVENTS.REQUEST, () => {
+        let wholeStoryElement = document.getElementById('root').children[0] as HTMLElement;
+        elementClipper.create(wholeStoryElement, (dataUri: string) => {
+            channel.emit(EVENTS.FINISH, dataUri);
+        });
+    });
+
     return StoryFn();
 };

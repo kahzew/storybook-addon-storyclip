@@ -27,6 +27,10 @@ export class ElementClip {
      */
     public create(element: HTMLElement, callback: (dataUrl: string) => void): void {
 
+        // in order to write to the clipboard
+        // the document must be in a focused state
+        this.focusDocument();
+
         // Create settings
         let html2canvasSettings: Partial<Options> = this.createHtml2CanvasSettings(element);
 
@@ -49,6 +53,20 @@ export class ElementClip {
                 });
             });
         });
+    }
+
+    /**
+     * In order for the clipboard to work in an iframe when
+     * the toolbar is focused, we need to clear any activeElements
+     */
+    private focusDocument(): void {
+        // Give the document focus
+        window.focus();
+
+        // Remove focus from any focused element
+        if (document.activeElement) {
+            (document.activeElement as HTMLElement).blur();
+        }
     }
 
     /**
