@@ -1,3 +1,4 @@
+import React from 'react';
 import { addons, types } from "@storybook/addons";
 import { ADDON_ID, EVENTS, PARAM_KEY, TOOL_IDS } from "../constants";
 import { Tool } from "../Tool";
@@ -23,14 +24,20 @@ addons.register(ADDON_ID, (api) => {
     // Register the finish event
     channel.on(EVENTS.FINISH, (dataUri: string) => {
 
+        let currentNotificationId: number = notificationId++;
+
         // Notify User
         api.addNotification({
             content: {
                 headline: 'Storyclip Finished',
-                subHeadline: 'Paste the contents of your clipboard into your favorite application.',
+                subHeadline:
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <span>Check your clipbaord for the following image: </span>
+                        <img src={dataUri} style={{ height: 'auto', width: '100px', marginInline: '8px' }}></img>
+                    </div>
             },
-            id: `${notificationId++}`,
-            link: dataUri,
+            id: `${currentNotificationId}`,
+            link: '',
             icon: {
                 name: 'camera',
                 color: 'red'
@@ -42,6 +49,11 @@ addons.register(ADDON_ID, (api) => {
         api.updateGlobals({
             storyclipEnabled: false
         });
+
+        // Clear the notification after 5 seconds
+        setTimeout(() => {
+            api.clearNotification(`${currentNotificationId}`);
+        }, 5000);
     });
 });
 
